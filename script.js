@@ -16,7 +16,7 @@ $(function () {
     var id = searchId();
     setHtml(id, $('.image-field'+'.even'));
     array.push(id);
-    }, 3000);    
+    }, 5);    
 
     // ロード画面
     loading();
@@ -171,7 +171,7 @@ function setAns(data, num, adj = false) {
 }
 
 // 好みに近いツイートの取得に使う関数
-function calcAns(a, b, c, d, e, f) {
+function calcAns(a, b, c, d) {
     let distance_arr = [];
     $.ajax({
         type: 'GET',
