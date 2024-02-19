@@ -16,7 +16,7 @@ $(function () {
     var id = searchId();
     setHtml(id, $('.image-field'+'.even'));
     array.push(id);
-    }, 5);    
+    }, 1000);    
 
     // ロード画面
     loading();
@@ -67,7 +67,7 @@ $(function () {
         $("#prob").html(Math.round(prob*100)/100);
 
         // 終了時
-        if (ans.length == 20) {
+        if (ans.length == 5) {
             $('footer').remove();
 
             let ansHtml = '';
