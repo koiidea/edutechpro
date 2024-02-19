@@ -11,7 +11,12 @@ $(function () {
     setHtml(id, $('.image-field'+'.odd'));
     array.push(id);
 
-    
+    // 裏で次のツイートを読み込んでおく
+    setTimeout(function () {
+    var id = searchId();
+    setHtml(id, $('.image-field'+'.even'));
+    array.push(id);
+    }, 3000);    
 
     // ロード画面
     loading();
@@ -25,13 +30,6 @@ $(function () {
         if ($(this).text() != "飛ばす（読み込まれないとき）") {
             array.push(id);
         }
-
-        // 裏で次のツイートを読み込んでおく
-        setTimeout(function () {
-        var id = searchId();
-        setHtml(id, $('.image-field'+'.even'));
-        array.push(id);
-        }, 3000);
 
         // 裏にデータを入れる
         if (flg) {
