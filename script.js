@@ -26,6 +26,13 @@ $(function () {
             array.push(id);
         }
 
+        // 裏で次のツイートを読み込んでおく
+        setTimeout(function () {
+        var id = searchId();
+        setHtml(id, $('.image-field'+'.even'));
+        array.push(id);
+        }, 3000);
+
         // 裏にデータを入れる
         if (flg) {
             $('.image-field'+'.odd').hide();
