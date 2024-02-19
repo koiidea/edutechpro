@@ -45,32 +45,26 @@ $(function () {
         }
         
         // 累積データの取得
-        let hairLength = Number($("#hairLength").html());
-        let hairColor = Number($("#hairColor").html());
-        let cuteCool = Number($("#cuteCool").html());
-        let gal = Number($("#gal").html());
-        let age = Number($("#age").html());
-        let make = Number($("#make").html());
+        let number_calc = Number($("#number_calc").html());
+        let figure = Number($("#figure").html());
+        let ffunction = Number($("#function").html());
+        let prob = Number($("#prob").html());
         
         // 今回のデータを反映
         if ($(this).hasClass('js-good')) {
-            hairLength += Number(JSON.parse($data.html())['hairLength']);
-            hairColor += Number(JSON.parse($data.html())['hairColor']);
-            cuteCool += Number(JSON.parse($data.html())['cuteCool']);
-            gal += Number(JSON.parse($data.html())['gal']);
-            age += Number(JSON.parse($data.html())['age']);
-            make += Number(JSON.parse($data.html())['make']);
+            number_calc += Number(JSON.parse($data.html())['number_calc']);
+            figure += Number(JSON.parse($data.html())['figure']);
+            ffunction += Number(JSON.parse($data.html())['ffunction']);
+            prob += Number(JSON.parse($data.html())['prob']);
 
             ans.push(id);
         } else {
             ng.push(id);
         }
-        $("#hairLength").html(Math.round(hairLength*100)/100);
-        $("#hairColor").html(Math.round(hairColor*100)/100);
-        $("#cuteCool").html(Math.round(cuteCool*100)/100);
-        $("#gal").html(Math.round(gal*100)/100);
-        $("#age").html(Math.round(age*100)/100);
-        $("#make").html(Math.round(make*100)/100);
+        $("#number_calc").html(Math.round(number_calc*100)/100);
+        $("#figure").html(Math.round(figure*100)/100);
+        $("#ffunction").html(Math.round(ffunction*100)/100);
+        $("#prob").html(Math.round(prob*100)/100);
 
         // 終了時
         if (ans.length == 20) {
@@ -78,44 +72,34 @@ $(function () {
 
             let ansHtml = '';
             ansHtml += '<div class="ans">';
-            ansHtml += '<div class="ans-intro">あなたの好みは…</div>';
+            ansHtml += '<div class="ans-intro">あなたのニガテは…</div>';
 
-            a = setAns(hairLength, ans.length);
-            ansHtml += '<span class="ans-title">髪の長さ</span>';
+            a = setAns(number_calc, ans.length);
+            ansHtml += '<span class="ans-title">数と式</span>';
             ansHtml += `<div class="progress"><div class="progress-bar" role="progressbar" style="width: ${a}%;" aria-valuenow="${a}" aria-valuemin="0" aria-valuemax="100">${a}%</div></div>`;
-            ansHtml += '<div class="ans-label"><div class="label-name">短い</div><div class="label-name">長い</div></div>';
+            ansHtml += '<div class="ans-label"><div class="label-name">得意</div><div class="label-name">ニガテ</div></div>';
 
-            b = setAns(hairColor, ans.length);
-            ansHtml += '<span class="ans-title">髪の色</span>';
+            b = setAns(figure, ans.length);
+            ansHtml += '<span class="ans-title">図形</span>';
             ansHtml += `<div class="progress"><div class="progress-bar" role="progressbar" style="width: ${b}%;" aria-valuenow="${b}" aria-valuemin="0" aria-valuemax="100">${b}%</div></div>`;
-            ansHtml += '<div class="ans-label"><div class="label-name">黒髪</div><div class="label-name">派手</div></div>';
+            ansHtml += '<div class="ans-label"><div class="label-name">得意</div><div class="label-name">不得意</div></div>';
 
-            c = setAns(cuteCool, ans.length);
-            ansHtml += '<span class="ans-title">雰囲気</span>';
+            c = setAns(ffunction, ans.length);
+            ansHtml += '<span class="ans-title">関数</span>';
             ansHtml += `<div class="progress"><div class="progress-bar" role="progressbar" style="width: ${c}%;" aria-valuenow="${c}" aria-valuemin="0" aria-valuemax="100">${c}%</div></div>`;
-            ansHtml += '<div class="ans-label"><div class="label-name">かわいい</div><div class="label-name">綺麗 </div><div class="label-name">クール</div></div>';
+            ansHtml += '<div class="ans-label"><div class="label-name">得意</div><div class="label-name">まあまあ</div><div class="label-name">ニガテ</div></div>';
 
-            d = setAns(gal, ans.length);
-            ansHtml += '<span class="ans-title">属性</span>';
+            d = setAns(prob, ans.length);
+            ansHtml += '<span class="ans-title">確率</span>';
             ansHtml += `<div class="progress"><div class="progress-bar" role="progressbar" style="width: ${d}%;" aria-valuenow="${d}" aria-valuemin="0" aria-valuemax="100">${d}%</div></div>`;
-            ansHtml += '<div class="ans-label"><div class="label-name">メンヘラ</div><div class="label-name">清楚</div><div class="label-name">ギャル</div></div>';
+            ansHtml += '<div class="ans-label"><div class="label-name">得意</div><div class="label-name">まあまあ</div><div class="label-name">ニガテ</div></div>';
 
-            e = setAns(age, ans.length);
-            ansHtml += '<span class="ans-title">年齢</span>';
-            ansHtml += `<div class="progress"><div class="progress-bar" role="progressbar" style="width: ${e}%;" aria-valuenow="${e}" aria-valuemin="0" aria-valuemax="100">${e}%</div></div>`;
-            ansHtml += '<div class="ans-label"><div class="label-name">ロリ</div><div class="label-name">お姉さん</div></div>';
-
-            f = setAns(make, ans.length);
-            ansHtml += '<span class="ans-title">メイク</span>';
-            ansHtml += `<div class="progress"><div class="progress-bar" role="progressbar" style="width: ${f}%;" aria-valuenow="${f}" aria-valuemin="0" aria-valuemax="100">${f}%</div></div>`;
-            ansHtml += '<div class="ans-label"><div class="label-name">薄め</div><div class="label-name">濃いめ</div></div>';
-
-            ansHtml += '<div class="ans-outro">▼ 最も好みに近いデータは以下です</div>';
+            ansHtml += '<div class="ans-outro">▼ 最もあなたに近いデータは以下です</div>';
 
             ansHtml += '</div>';
 
             $(".content").html(ansHtml);
-            calcAns(hairLength/ans.length, hairColor/ans.length, cuteCool/ans.length, gal/ans.length, age/ans.length, make/ans.length);
+            calcAns(number_calc/ans.length, figure/ans.length, ffunction/ans.length, prob/ans.length);
         }
     });
 });
@@ -148,7 +132,7 @@ function searchId() {
 function setHtml(id, $field) {
     $.ajax({
         type: 'GET',
-        url: './girls.json',
+        url: './problem.json',
         dataType: 'json'
     })
     .then(
@@ -191,7 +175,7 @@ function calcAns(a, b, c, d, e, f) {
     let distance_arr = [];
     $.ajax({
         type: 'GET',
-        url: './girls.json',
+        url: './problem.json',
         dataType: 'json'
     })
     .then(
@@ -207,14 +191,12 @@ function calcAns(a, b, c, d, e, f) {
                     continue;
                 }
                 distance = 0;
-                console.log(data_json[i]['params']['hair0Length'], a);
-                distance += Math.pow(data_json[i]['params']['hairLength'] - a, 2);
-                distance += Math.pow(data_json[i]['params']['hairColor'] - b, 2);
-                distance += Math.pow(data_json[i]['params']['cuteCool'] - c, 2);
-                distance += Math.pow(data_json[i]['params']['gal'] - d, 2);
-                distance += Math.pow(data_json[i]['params']['age'] - e, 2);
-                distance += Math.pow(data_json[i]['params']['make'] - f, 2);
-                distance_arr.push(distance / 6);
+                console.log(data_json[i]['params']['number0calc'], a);
+                distance += Math.pow(data_json[i]['params']['number_calc'] - a, 2);
+                distance += Math.pow(data_json[i]['params']['figure'] - b, 2);
+                distance += Math.pow(data_json[i]['params']['ffunction'] - c, 2);
+                distance += Math.pow(data_json[i]['params']['prob'] - d, 2);
+                distance_arr.push(distance / 4);
             }
 
             let id = distance_arr.indexOf(Math.min(...distance_arr))

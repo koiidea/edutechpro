@@ -1,11 +1,9 @@
 [{
     "code": "<blockquote class=\"twitter-tweet\"><a href=\"https://twitter.com/junior_math811/status/1747505050086465778\"></blockquote><script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>",
 	"params": {
-		"hairLength":0.8,
-		"hairColor":0.2,
-		"cuteCool":0.35,
-		"gal":0.4,
-		"age":0.5,
-		"make":0.4
+		"number_calc":0.8,
+		"figure":0.2,
+		"ffunction":0.35,
+		"prob":0.4
     }
 }]
